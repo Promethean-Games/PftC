@@ -73,7 +73,7 @@ app.use((req, res, next) => {
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
     "font-src 'self' https://fonts.gstatic.com; " +
     "img-src 'self' data: https:; " +
-    "connect-src 'self' https://api.stripe.com; " +
+    "connect-src 'self' https://api.stripe.com https://play.google.com https://prometheangames.com; " +
     "frame-ancestors 'none'"
   );
   next();
