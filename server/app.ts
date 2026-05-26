@@ -64,6 +64,21 @@ app.use((req, res, next) => {
   next();
 });
 
+// Add Content Security Policy headers
+app.use((req, res, next) => {
+  res.setHeader(
+    'Content-Security-Policy',
+    "default-src 'self'; " +
+    "script-src 'self' 'wasm-unsafe-eval'; " +
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+    "font-src 'self' https://fonts.gstatic.com; " +
+    "img-src 'self' data: https:; " +
+    "connect-src 'self' https://api.stripe.com; " +
+    "frame-ancestors 'none'"
+  );
+  next();
+});
+
 export default async function runApp(
   setup: (app: Express, server: Server) => Promise<void>,
 ) {
